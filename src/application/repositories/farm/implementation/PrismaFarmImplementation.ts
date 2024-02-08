@@ -21,8 +21,19 @@ export class PrismaFarmImplementation implements IFarmRepository {
   async list({ id, name, city, state }: IListFarmsDTO) {
     return await this.repository.farm.findMany({
       where: {
-        name: name ? { contains: name } : undefined,
-        id: id ? { equals: id, mode: "insensitive" } : undefined,
+        name: name ? { contains: name, mode: "insensitive" } : undefined,
+        id: id ? { equals: id } : undefined,
+        city: city ? { contains: city } : undefined,
+        state: state ? { contains: state } : undefined
+      }
+    });
+  }
+
+  async find({ id, name, city, state }: IListFarmsDTO) {
+    return await this.repository.farm.findFirst({
+      where: {
+        name: name ? { equals: name, mode: "insensitive" } : undefined,
+        id: id ? { equals: id } : undefined,
         city: city ? { contains: city } : undefined,
         state: state ? { contains: state } : undefined
       }
