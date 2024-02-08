@@ -6,9 +6,9 @@ export class UpdateProducerController {
 
   async handle(request: Request, response: Response) {
     const { id } = request.params;
-    const { name, cpf, cnpj } = request.body;
+    const { name } = request.body;
 
-    await this.useCase.execute({ id, name, cpf, cnpj });
+    await this.useCase.execute({ id, name });
 
     return response.json({ message: "Producer updated successfully" });
   }
