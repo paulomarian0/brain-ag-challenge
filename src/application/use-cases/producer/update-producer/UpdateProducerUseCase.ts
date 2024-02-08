@@ -1,3 +1,5 @@
+import { validateCnpj } from "../../../../helpers/validate-cnpj";
+import { validateCpf } from "../../../../helpers/validate-cpf";
 import { IUpdateProducerDTO } from "../../../dtos/producer/UpdateProducerDTO";
 import { IProducerRepository } from "../../../repositories/producer/IProducerRepository";
 
@@ -22,10 +24,6 @@ export class UpdateProducerUseCase {
     const findByCpf = await this.producerRepository.find({ cpf });
     const findByCnpj = await this.producerRepository.find({ cnpj });
 
-    if (!id) {
-      throw new Error("Você deve informar um id");
-    }
-
     if (!cpf && !cnpj) {
       throw new Error("Você deve informar um CPF ou CNPJ");
     }
@@ -34,15 +32,23 @@ export class UpdateProducerUseCase {
       throw new Error("Você deve informar um nome");
     }
 
-    if (!findById) {
-      throw new Error("Não existe um produtor com esse id");
+    if (cnpj && !validateCnpj(cnpj)) {
+      throw new Error("CNPJ inválido");
     }
 
-    if (findByCpf) {
+    if (cpf && !validateCpf(cpf)) {
+      throw new Error("CPF inválido");
+    }
+
+    if (id && !findById) {
+      throw new Error("Produtor não encontrado");
+    }
+
+    if (cnpj && findByCpf) {
       throw new Error("Já existe um produtor com esse CPF");
     }
 
-    if (findByCnpj) {
+    if (cpf && findByCnpj) {
       throw new Error("Já existe um produtor com esse CNPJ");
     }
   }
