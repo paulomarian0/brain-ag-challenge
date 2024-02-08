@@ -43,14 +43,12 @@ export class PrismaProducerImplementation implements IProducerRepository {
     });
   }
 
-  async update({ id, cpf, cnpj, name }: IUpdateProducerDTO) {
+  async update({ id, name }: IUpdateProducerDTO) {
     await this.repository.producer.update({
       where: {
         id
       },
       data: {
-        cpf,
-        cnpj,
         name
       }
     });
