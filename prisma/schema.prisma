@@ -25,7 +25,7 @@ model producer {
 }
 
 model farm {
-  id              String   @id @default(uuid())
+  id              String    @id @default(uuid())
   name            String
   city            String
   state           String
@@ -33,6 +33,6 @@ model farm {
   arable_area     Float
   vegetation_area Float
   crops           crops[]
-  producer        producer @relation(fields: [producerId], references: [id])
-  producerId      String
+  producer        producer? @relation(fields: [producerId], references: [id])
+  producerId      String?
 }
