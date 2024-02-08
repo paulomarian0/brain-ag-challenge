@@ -8,7 +8,7 @@ datasource db {
 }
 
 // Soybeans, Corn, Cotton, Coffee, Sugarcane
-enum Crops {
+enum crops {
   SOYBEANS
   CORN
   COTTON
@@ -16,15 +16,15 @@ enum Crops {
   SUGARCANE
 }
 
-model Producer {
+model producer {
   id    String  @id @default(uuid())
   cpf   String? @unique
   cnpj  String? @unique
   name  String
-  farms Farm[]
+  farms farm[]
 }
 
-model Farm {
+model farm {
   id              String   @id @default(uuid())
   name            String
   city            String
@@ -32,7 +32,7 @@ model Farm {
   total_area      Float
   arable_area     Float
   vegetation_area Float
-  crops           Crops[]
-  producer        Producer @relation(fields: [producerId], references: [id])
+  crops           crops[]
+  producer        producer @relation(fields: [producerId], references: [id])
   producerId      String
 }
