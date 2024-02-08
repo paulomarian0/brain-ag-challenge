@@ -6,6 +6,7 @@ import { Producer } from "../../entities/Producer";
 
 export interface IProducerRepository {
   create(data: ICreateProducerDTO): Promise<void>;
+  find(data: IListProducersDTO): Promise<Producer | null>;
   list(data: IListProducersDTO): Promise<Producer[]>;
   update(data: IUpdateProducerDTO): Promise<void>;
   delete(data: IDeleteProducerDTO): Promise<void>;

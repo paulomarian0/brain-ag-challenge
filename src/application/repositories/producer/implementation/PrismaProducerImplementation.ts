@@ -33,6 +33,16 @@ export class PrismaProducerImplementation implements IProducerRepository {
     });
   }
 
+  async find({ name, cnpj, cpf }: IListProducersDTO) {
+    return await this.repository.producer.findFirst({
+      where: {
+        name: name ? { contains: name } : undefined,
+        cpf: cpf ? { equals: cpf } : undefined,
+        cnpj: cnpj ? { equals: cnpj } : undefined
+      }
+    });
+  }
+
   async update({ id, cpf, cnpj, name }: IUpdateProducerDTO) {
     await this.repository.producer.update({
       where: {
