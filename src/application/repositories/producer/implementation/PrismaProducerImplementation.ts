@@ -25,8 +25,8 @@ export class PrismaProducerImplementation implements IProducerRepository {
   async list({ id, name, cpf, cnpj }: IListProducersDTO) {
     return await this.repository.producer.findMany({
       where: {
-        name: name ? { contains: name } : undefined,
-        id: id ? { equals: id, mode: "insensitive" } : undefined,
+        name: name ? { contains: name, mode: "insensitive" } : undefined,
+        id: id ? { equals: id } : undefined,
         cpf: cpf ? { equals: cpf } : undefined,
         cnpj: cnpj ? { equals: cnpj } : undefined
       }
@@ -36,7 +36,7 @@ export class PrismaProducerImplementation implements IProducerRepository {
   async find({ name, cnpj, cpf }: IListProducersDTO) {
     return await this.repository.producer.findFirst({
       where: {
-        name: name ? { contains: name } : undefined,
+        name: name ? { equals: name, mode: "insensitive" } : undefined,
         cpf: cpf ? { equals: cpf } : undefined,
         cnpj: cnpj ? { equals: cnpj } : undefined
       }

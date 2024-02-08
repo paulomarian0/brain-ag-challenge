@@ -1,3 +1,5 @@
+import { states } from "./CreateFarmDTO";
+
 enum crops {
   SOYBEANS = "SOYBEANS",
   CORN = "CORN",
@@ -10,7 +12,7 @@ export interface IUpdateFarmDTO {
   id: string;
   name?: string;
   city?: string;
-  state?: string;
+  state?: states;
   total_area?: number;
   arable_area?: number;
   vegetation_area?: number;

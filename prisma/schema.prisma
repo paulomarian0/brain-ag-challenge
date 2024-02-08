@@ -16,6 +16,36 @@ enum crops {
   SUGARCANE
 }
 
+enum states {
+  AC
+  AL
+  AP
+  AM
+  BA
+  CE
+  DF
+  ES
+  GO
+  MA
+  MT
+  MS
+  MG
+  PA
+  PB
+  PR
+  PE
+  PI
+  RJ
+  RN
+  RS
+  RO
+  RR
+  SC
+  SP
+  SE
+  TO
+}
+
 model producer {
   id    String  @id @default(uuid())
   cpf   String? @unique
@@ -28,7 +58,7 @@ model farm {
   id              String    @id @default(uuid())
   name            String
   city            String
-  state           String
+  state           states
   total_area      Float
   arable_area     Float
   vegetation_area Float

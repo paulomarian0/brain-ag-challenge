@@ -24,7 +24,7 @@ export class PrismaFarmImplementation implements IFarmRepository {
         name: name ? { contains: name, mode: "insensitive" } : undefined,
         id: id ? { equals: id } : undefined,
         city: city ? { contains: city } : undefined,
-        state: state ? { contains: state } : undefined
+        state
       }
     });
   }
@@ -35,7 +35,18 @@ export class PrismaFarmImplementation implements IFarmRepository {
         name: name ? { equals: name, mode: "insensitive" } : undefined,
         id: id ? { equals: id } : undefined,
         city: city ? { contains: city } : undefined,
-        state: state ? { contains: state } : undefined
+        state: state ? { equals: state } : undefined
+      }
+    });
+  }
+
+  async count({ id, name, city, state }: IListFarmsDTO) {
+    return await this.repository.farm.count({
+      where: {
+        name: name ? { equals: name, mode: "insensitive" } : undefined,
+        id: id ? { equals: id } : undefined,
+        city: city ? { contains: city } : undefined,
+        state: state ? { equals: state } : undefined // Aqui, substituímos 'contains' por 'equals'
       }
     });
   }
