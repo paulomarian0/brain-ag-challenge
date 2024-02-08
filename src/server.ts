@@ -7,11 +7,7 @@ const app = express();
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send(
-    "Bem-vindo ao meu servidor Node.js com TypeScript e CORS habilitado!"
-  );
-});
+app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
