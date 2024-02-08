@@ -2,6 +2,7 @@ import { ICreateProducerDTO } from "../../../dtos/producer/CreateProducerDTO";
 import { IProducerRepository } from "../../../repositories/producer/IProducerRepository";
 import { validateCnpj } from "../../../../helpers/validate-cnpj";
 import { validateCpf } from "../../../../helpers/validate-cpf";
+import { removeCpfCnpjMask } from "../../../../helpers/remove-mask";
 
 interface IExecute extends ICreateProducerDTO {}
 
@@ -10,8 +11,9 @@ export class CreateProducerUseCase {
 
   async execute({ name, cpf, cnpj }: IExecute) {
     await this.validate({ name, cpf, cnpj });
+    const { cpf: newCpf, cnpj: newCnpj } = await this.removeMask(cpf, cnpj);
 
-    await this.producerRepository.create({ name, cpf, cnpj });
+    await this.producerRepository.create({ name, cpf: newCpf, cnpj: newCnpj });
   }
 
   async validate({ name, cpf, cnpj }: IExecute) {
@@ -46,5 +48,12 @@ export class CreateProducerUseCase {
     if (name && findByName) {
       throw new Error("Já existe um produtor com esse nome");
     }
+  }
+
+  async removeMask(cpf?: string, cnpj?: string) {
+    return {
+      cpf: removeCpfCnpjMask(cpf),
+      cnpj: removeCpfCnpjMask(cnpj)
+    };
   }
 }
