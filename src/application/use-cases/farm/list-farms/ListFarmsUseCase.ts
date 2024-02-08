@@ -7,6 +7,8 @@ export class ListFarmsUseCase {
   constructor(private farmRepository: IFarmRepository) {}
 
   async execute({ id, name, city, state }: IExecute) {
-    return await this.farmRepository.list({ id, name, city, state });
+    const farms = await this.farmRepository.list({ id, name, city, state });
+
+    return { data: farms };
   }
 }
