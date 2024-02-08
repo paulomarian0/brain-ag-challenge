@@ -7,7 +7,6 @@ export class Farm {
   arable_area: number;
   vegetation_area: number;
   crops: string[];
-  producer: string;
 
   constructor(
     id: string,
@@ -28,6 +27,5 @@ export class Farm {
     this.arable_area = arable_area;
     this.vegetation_area = vegetation_area;
     this.crops = crops;
-    this.producer = producer;
   }
 }
