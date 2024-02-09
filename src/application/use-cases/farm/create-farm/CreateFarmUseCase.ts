@@ -6,10 +6,19 @@ interface IExecute extends ICreateFarmDTO {}
 export class CreateFarmUseCase {
   constructor(private farmRepository: IFarmRepository) {}
 
-  async execute({ name, city, state, total_area, arable_area, vegetation_area, crops }: IExecute) {
-    await this.validateArea({ name, city, state, total_area, arable_area, vegetation_area, crops });
+  async execute({ name, city, state, total_area, arable_area, vegetation_area, crops, producerId }: IExecute) {
+    await this.validateArea({ name, city, state, total_area, arable_area, vegetation_area, crops, producerId });
 
-    return await this.farmRepository.create({ name, city, state, total_area, arable_area, vegetation_area, crops });
+    return await this.farmRepository.create({
+      name,
+      city,
+      state,
+      total_area,
+      arable_area,
+      vegetation_area,
+      crops,
+      producerId
+    });
   }
 
   async validateArea({ name, city, state, total_area, arable_area, vegetation_area, crops }: IExecute) {

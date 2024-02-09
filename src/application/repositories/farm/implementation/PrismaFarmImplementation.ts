@@ -12,9 +12,9 @@ export class PrismaFarmImplementation implements IFarmRepository {
     this.repository = databaseAdapter;
   }
 
-  async create({ name, city, state, total_area, arable_area, vegetation_area, crops }: ICreateFarmDTO) {
+  async create({ name, city, state, total_area, arable_area, vegetation_area, crops, producerId }: ICreateFarmDTO) {
     await this.repository.farm.create({
-      data: { name, city, state, total_area, arable_area, vegetation_area, crops }
+      data: { name, city, state, total_area, arable_area, vegetation_area, crops, producerId }
     });
   }
 
@@ -69,7 +69,7 @@ export class PrismaFarmImplementation implements IFarmRepository {
   }
 
   async delete({ id }: IDeleteFarmDTO) {
-    await this.repository.producer.delete({
+    await this.repository.farm.delete({
       where: {
         id
       }

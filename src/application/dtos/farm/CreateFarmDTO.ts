@@ -44,4 +44,5 @@ export interface ICreateFarmDTO {
   arable_area: number;
   vegetation_area: number;
   crops: crops[];
+  producerId?: string;
 }
