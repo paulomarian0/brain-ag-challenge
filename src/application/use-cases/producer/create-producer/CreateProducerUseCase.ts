@@ -25,6 +25,10 @@ export class CreateProducerUseCase {
       throw new Error("Você deve informar um CPF ou CNPJ");
     }
 
+    if (cpf && cnpj) {
+      throw new Error("Você deve informar apenas um CPF ou CNPJ");
+    }
+
     if (!name) {
       throw new Error("Você deve informar um nome");
     }
