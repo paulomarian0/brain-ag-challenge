@@ -10,7 +10,7 @@
 1. Clone este repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/brain-ag-challenge.git
+    git clone https://github.com/paulomarian0/brain-ag-challenge.git
     ```
 
 2. Entre no diretório do projeto:
@@ -25,7 +25,7 @@
     npm install
     ```
 
-4. Crie um arquivo `.env` baseado no `.env.example`.
+4. Crie um arquivo `.env`, você pode copiar o conteúdo do `.env.example`, para rodar o docker localmente e o servidor rodar na porta 3000.
 
 5. Inicie os containers Docker:
 
