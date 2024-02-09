@@ -22,7 +22,7 @@
 3. Instale as dependências:
 
     ```bash
-    npm install
+    npm i
     ```
 
 4. Crie um arquivo `.env`, você pode copiar o conteúdo do `.env.example`, para rodar o docker localmente e o servidor rodar na porta 3000.
