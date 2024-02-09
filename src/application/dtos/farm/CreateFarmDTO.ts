@@ -1,4 +1,4 @@
-enum crops {
+export enum crops {
   SOYBEANS = "SOYBEANS",
   CORN = "CORN",
   COTTON = "COTTON",
