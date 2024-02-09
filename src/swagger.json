@@ -1,9 +1,9 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Dashboard API",
+        "title": "Teste - Brain Agriculture",
         "version": "1.0.0",
-        "description": "API para o painel de controle do dashboard"
+        "description": "Documentação para o teste técnico da Brain Agriculture"
     },
     "tags": [
         {
