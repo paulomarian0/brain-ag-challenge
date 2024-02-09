@@ -1,0 +1,203 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dashboard API",
+        "version": "1.0.0",
+        "description": "API para o painel de controle do dashboard"
+    },
+    "tags": [
+        {
+            "name": "dashboard",
+            "description": "Rotas relacionadas ao dashboard"
+        },
+        {
+            "name": "farm",
+            "description": "Rotas relacionadas a fazendas"
+        },
+        {
+            "name": "producer",
+            "description": "Rotas relacionadas a produtores"
+        }
+    ],
+    "paths": {
+        "/dashboard/by-state": {
+            "get": {
+                "summary": "Retorna dados agrupados por estado",
+                "tags": [
+                    "dashboard"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/dashboard/by-land-use": {
+            "get": {
+                "summary": "Retorna dados agrupados por uso da terra",
+                "tags": [
+                    "dashboard"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/dashboard/by-crop": {
+            "get": {
+                "summary": "Retorna dados agrupados por cultura",
+                "tags": [
+                    "dashboard"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/farm": {
+            "get": {
+                "summary": "Lista todas as fazendas",
+                "tags": [
+                    "farm"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cria uma nova fazenda",
+                "tags": [
+                    "farm"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/farms/{id}": {
+            "put": {
+                "summary": "Atualiza uma fazenda existente",
+                "tags": [
+                    "farm"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da fazenda a ser atualizada",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta uma fazenda existente",
+                "tags": [
+                    "farm"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da fazenda a ser deletada",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/producer": {
+            "get": {
+                "summary": "Lista todos os produtores",
+                "tags": [
+                    "producer"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cria um novo produtor",
+                "tags": [
+                    "producer"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/producers/{id}": {
+            "put": {
+                "summary": "Atualiza um produtor existente",
+                "tags": [
+                    "producer"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produtor a ser atualizado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta um produtor existente",
+                "tags": [
+                    "producer"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produtor a ser deletado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}
